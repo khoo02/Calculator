@@ -23,7 +23,10 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
-// 2. Create a function to perform the calculation based on the operator
+// 2. Add variables for operation
+let num1 = 0, num2 = 0, operator = '';
+
+// 3. Create a function to perform the calculation based on the operator
 function operate(num1, num2, operator) {
     // use switch for case base operation
     switch (operator) {
@@ -33,4 +36,15 @@ function operate(num1, num2, operator) {
         case '/': return divide(num1, num2);
         default: alert('Unknown operation');
     }
+}
+
+// reference to calculator div
+const btnContainer = document.getElementById('calculator');
+
+// 4. Create buttons for numbers 0-9
+for (let i = 0; i <= 9; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.textContent = i;
+    btnContainer.appendChild(btn);
 }
