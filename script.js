@@ -38,8 +38,8 @@ function operate(num1, num2, operator) {
     }
 }
 
-// reference to calculator div
-const btnContainer = document.getElementById('calculator');
+// reference to nums div
+const btnContainer = document.getElementById('nums');
 
 // 4. Create buttons for numbers 0-9
 for (let i = 0; i <= 9; i++) {
@@ -48,3 +48,7 @@ for (let i = 0; i <= 9; i++) {
     btn.textContent = i;
     btnContainer.appendChild(btn);
 }
+
+// 5. Create display
+const display = document.getElementById('display');
+display.textContent = '0123456789';
