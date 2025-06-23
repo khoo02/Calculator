@@ -38,16 +38,15 @@ function operate(num1, num2, operator) {
     }
 }
 
-// reference to nums div
-const btnContainer = document.getElementById('nums');
 
-// 4. Create buttons for numbers 0-9
-for (let i = 0; i <= 9; i++) {
-    const btn = document.createElement('button');
-    btn.className = 'btn';
-    btn.textContent = i;
-    btnContainer.appendChild(btn);
-}
+// 4. Use javascript to create buttons for numbers 0-9
+    // const btnContainer = document.getElementById('nums');
+    // for (let i = 0; i <= 9; i++) {
+    //     const btn = document.createElement('button');
+    //     btn.className = 'btn';
+    //     btn.textContent = i;
+    //     btnContainer.appendChild(btn);
+    // }
 
 // 5. Create display
 const display = document.getElementById('display');
