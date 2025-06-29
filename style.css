@@ -3,10 +3,11 @@ body {
 }
 #calculator {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
     flex-direction: column;
     box-sizing: border-box;
+    height: 90vh;
     margin: 0;
 }
 
@@ -15,25 +16,37 @@ body {
     justify-content: center; /* centers horizontally */
     align-items: center; /* centers vertically */
     box-sizing: border-box;
-    width: 15%;
-    height: 50px;
+    width: 30%;
+    height: 10%;
+    padding: 20px;
+    font-size: 2em;
     background-color: white;
 }
 
+/* calculator body */
 #buttons {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
     flex-direction: column-reverse;
     box-sizing: border-box;
-    width: 15%;
-    padding: 30px;
+    width: 30%;
+    padding: 2em;
     background-color: grey;
 }
 
+/* calculator button rows */
+#row1, #row2, #row3, #row4, #row5 {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+}
+
+
+
 .btn {
     box-sizing: border-box;
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     margin: 0;
 }
