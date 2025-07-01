@@ -37,12 +37,12 @@ function operate(num1, num2, operator) {
         default: alert('Unknown operation');
     }
 }
+// Create a variable to hold the current input for display
+let currentInput = '';
 
-// Store button input into variables
-let currentInput = ''; // Variable to hold the current input for display
-
-const display = document.getElementById('display'); // Reference to the display element
-const buttons = document.querySelectorAll('.btn'); // Reference to all buttons
+// Get references to display and buttons in HTML
+const display = document.getElementById('display');
+const buttons = document.querySelectorAll('.btn');
 
 // 5. Create function to populate display
 populateDisplay = (string) => {
@@ -55,7 +55,7 @@ buttons.forEach(button => { // button represents current button in the loop
     // Add event listener to each button
     button.addEventListener('click', () => {
         const value = button.textContent; // value of the button clicked
-        
+
         // If button is a number or decimal point
         if (!isNaN(value) || value === '.') {
             currentInput += value; // Append the number to current input
@@ -101,4 +101,3 @@ buttons.forEach(button => { // button represents current button in the loop
     })
 });
 
-// 6. Make calculator work with operate() function when = is pressed

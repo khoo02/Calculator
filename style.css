@@ -11,24 +11,44 @@ body {
     margin: 0;
 }
 
-#display {
+#calculator-top {
     display: flex;
-    justify-content: center; /* centers horizontally */
+    justify-content: flex-end; /* centers horizontally */
     align-items: center; /* centers vertically */
     box-sizing: border-box;
     width: 20%;
     height: 10%;
-    padding: 2em;
-    font-size: 2em;
-    background-color: white;
+    padding: 3em;
+    padding-bottom: 0px;;
+    background-color: grey;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border: 5px solid blue; /* adds a border to the display */
     border-bottom: 0px; /* removes the bottom border */;
 }
 
+#screen {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; /* centers vertically */
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* text within display */
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis; /* adds ellipsis for overflow text */
+    white-space: nowrap; /* prevents text from wrapping */
+    font-size: 3em;
+}
+
 /* calculator body */
-#buttons {
+#calculator-body {
     display: flex;
     justify-content: center; /* centers horizontally */
     align-items: center; /* centers vertically */
@@ -43,6 +63,16 @@ body {
     border-top: 0px; /* removes the top border */
 }
 
+#buttons {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    flex-direction: column-reverse;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 /* calculator button rows */
 #row1, #row2, #row3, #row4 {
     display: flex;
@@ -52,11 +82,12 @@ body {
 
 #row5 {
     display: flex;
-    flex-direction:row;
-    justify-content: center; /* centers horizontally */
+    flex-direction: row;
+    justify-content: flex-end; /* centers horizontally */
     align-items: center; /* centers vertically */
-    padding: 1em;
+    padding-bottom: 1em;
     box-sizing: border-box;
+    width: 100%; /* Make row5 take full width of its parent */
 }
 
 .btn {
