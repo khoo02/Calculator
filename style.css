@@ -16,11 +16,15 @@ body {
     justify-content: center; /* centers horizontally */
     align-items: center; /* centers vertically */
     box-sizing: border-box;
-    width: 30%;
+    width: 20%;
     height: 10%;
-    padding: 20px;
+    padding: 2em;
     font-size: 2em;
     background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 5px solid blue; /* adds a border to the display */
+    border-bottom: 0px; /* removes the bottom border */;
 }
 
 /* calculator body */
@@ -30,19 +34,30 @@ body {
     align-items: center; /* centers vertically */
     flex-direction: column-reverse;
     box-sizing: border-box;
-    width: 30%;
+    width: 20%;
     padding: 2em;
     background-color: grey;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 5px solid blue; /* adds a border to the buttons */
+    border-top: 0px; /* removes the top border */
 }
 
 /* calculator button rows */
-#row1, #row2, #row3, #row4, #row5 {
+#row1, #row2, #row3, #row4 {
     display: flex;
     justify-content: center; /* centers horizontally */
     align-items: center; /* centers vertically */
 }
 
-
+#row5 {
+    display: flex;
+    flex-direction:row;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    padding: 1em;
+    box-sizing: border-box;
+}
 
 .btn {
     box-sizing: border-box;

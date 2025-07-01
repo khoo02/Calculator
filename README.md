@@ -4,4 +4,4 @@
 3. Create operator function to call calculation functions.
 4. Create buttons in HTML for calculator. 
 5. Create functions that populate display on button click.
-6. 
+6. Make calculator work with operate() function
