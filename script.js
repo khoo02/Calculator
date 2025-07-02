@@ -64,10 +64,20 @@ buttons.forEach(button => { // button represents current button in the loop
         // If button is an operator (+, -, *, /)
         else if (['+', '-', '*', '/'].includes(value)) {
             if (currentInput !== '') {
-                // If there's a current input, store it as num1
-                num1 = parseFloat(currentInput);
-                operator = value; // Set the operator
-                currentInput = ''; // Reset current input for next number
+                // If there's already an operator, perform the previous operation first
+                if (operator !== '' && num1 !== null) {
+                    num2 = parseFloat(currentInput);
+                    const result = operate(num1, num2, operator);
+                    populateDisplay(result);
+                    num1 = result;
+                } else {
+                    num1 = parseFloat(currentInput);
+                }
+                operator = value; // Set the new operator
+                currentInput = '';
+            } else if (operator !== '' && num1 !== null) {
+                // Allow changing the operator if pressed consecutively
+                operator = value;
             }
         }
         // If button is the equals sign
@@ -101,3 +111,37 @@ buttons.forEach(button => { // button represents current button in the loop
     })
 });
 
+// 7. Add keyboard support
+// Add event listener for mouse click on display text
+display.addEventListener('click', () => {
+    // Focus the display to allow keyboard input
+    display.focus();
+    // Add event listener for keydown events
+    display.addEventListener('keydown', (event) => {
+        const key = event.key; // Get the key pressed
+        // If key is a number or decimal point})
+        if (!isNaN(key) || key === '.') {
+            currentInput += key; // Append the number to current input
+            populateDisplay(currentInput); // Update display
+        }
+        // If key is an operator (+, -, *, /)
+        else if (['+', '-', '*', '/'].includes(key)) {
+            if (currentInput !== '') {
+                // If there's already an operator, perform the previous operation first
+                if (operator !== '' && num1 !== null) {
+                    num2 = parseFloat(currentInput);
+                    const result = operate(num1, num2, operator);
+                    populateDisplay(result);
+                    num1 = result;
+                } else {
+                    num1 = parseFloat(currentInput);
+                }
+                operator = key; // Set the new operator
+                currentInput = '';
+            } else if (operator !== '' && num1 !== null) {
+                // Allow changing the operator if pressed consecutively
+                operator = key;
+            }
+        }
+    })
+});
