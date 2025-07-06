@@ -44,7 +44,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis; /* adds ellipsis for overflow text */
     white-space: nowrap; /* prevents text from wrapping */
-    font-size: 3em;
+    font-size: 2em;
 }
 
 /* calculator body */
@@ -92,7 +92,7 @@ body {
 
 .btn {
     box-sizing: border-box;
-    width: 70px;
-    height: 70px;
+    width: 3.5em;
+    height: 3.5em;
     margin: 0;
 }

@@ -39,6 +39,7 @@ function operate(num1, num2, operator) {
 }
 // Create a variable to hold the current input for display
 let currentInput = '';
+let justEvaluated = false;
 
 // Get references to display and buttons in HTML
 const display = document.getElementById('display');
@@ -51,6 +52,7 @@ populateDisplay = (string) => {
 }
 
 // 6. Make calculator work with operate() function when = is pressed
+
 buttons.forEach(button => { // button represents current button in the loop
     // Add event listener to each button
     button.addEventListener('click', () => {
@@ -112,36 +114,69 @@ buttons.forEach(button => { // button represents current button in the loop
 });
 
 // 7. Add keyboard support
-// Add event listener for mouse click on display text
-display.addEventListener('click', () => {
-    // Focus the display to allow keyboard input
-    display.focus();
-    // Add event listener for keydown events
-    display.addEventListener('keydown', (event) => {
-        const key = event.key; // Get the key pressed
-        // If key is a number or decimal point})
-        if (!isNaN(key) || key === '.') {
-            currentInput += key; // Append the number to current input
-            populateDisplay(currentInput); // Update display
+document.addEventListener('keydown', (event) => {
+
+    const key = event.key; // Get the key pressed
+
+    // Check if the key is a number or decimal point
+    if ((key >= '0' && key <= '9') || key === '.') {
+        if (justEvaluated) {
+            currentInput = '';
+            justEvaluated = false;
         }
-        // If key is an operator (+, -, *, /)
-        else if (['+', '-', '*', '/'].includes(key)) {
-            if (currentInput !== '') {
-                // If there's already an operator, perform the previous operation first
-                if (operator !== '' && num1 !== null) {
-                    num2 = parseFloat(currentInput);
-                    const result = operate(num1, num2, operator);
-                    populateDisplay(result);
-                    num1 = result;
-                } else {
-                    num1 = parseFloat(currentInput);
-                }
-                operator = key; // Set the new operator
-                currentInput = '';
-            } else if (operator !== '' && num1 !== null) {
-                // Allow changing the operator if pressed consecutively
-                operator = key;
+        currentInput += key;
+        populateDisplay(currentInput);
+    }
+    // Operators
+    else if (["+", "-", "*", "/"].includes(key)) {
+        if (currentInput !== '') {
+            if (operator !== '' && num1 !== null) {
+                num2 = parseFloat(currentInput);
+                const result = operate(num1, num2, operator);
+                populateDisplay(result);
+                num1 = result;
+            } else {
+                num1 = parseFloat(currentInput);
             }
+            operator = key;
+            currentInput = '';
+            justEvaluated = false;
+        } else if (operator !== '' && num1 !== null) {
+            operator = key;
+            justEvaluated = false;
         }
-    })
-});
+    }
+    // Equals (Enter or =)
+    else if (key === '=' || key === 'Enter') {
+        if (currentInput !== '' && operator !== '') {
+            num2 = parseFloat(currentInput);
+            const result = operate(num1, num2, operator);
+            populateDisplay(result);
+            num1 = result;
+            num2 = 0;
+            operator = '';
+            currentInput = '';
+            justEvaluated = true;
+        }
+    }
+    // Clear (C or c)
+    else if (key === 'c' || key === 'C') {
+        num1 = 0;
+        num2 = 0;
+        operator = '';
+        currentInput = '';
+        justEvaluated = false;
+        populateDisplay('0');
+    }
+    // Backspace
+    else if (key === 'Backspace') {
+        if (justEvaluated) {
+            currentInput = '';
+            justEvaluated = false;
+        } else {
+            currentInput = currentInput.slice(0, -1);
+        }
+        display.textContent = currentInput || '0';
+    }
+
+})
